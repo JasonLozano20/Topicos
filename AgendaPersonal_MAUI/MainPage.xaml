@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgendaPersonal_MAUI.MainPage"
+             Title ="Agenda Personal">
+
+    <StackLayout Padding="20">
+        <Button Text="Lista de Contactos" BackgroundColor="Brown" FontSize="Body"  Margin="10" Clicked="IrListaContactos" />
+        <Button Text="Crear Nuevo Contacto" BackgroundColor="Brown"  FontSize="Body" Margin="10" Clicked="IrCrearContacto" />
+        <Button Text="Configuración" BackgroundColor="Brown" FontSize="Body" Margin="10" Clicked="IrConfiguracion" />
+    </StackLayout>
+
+</ContentPage>

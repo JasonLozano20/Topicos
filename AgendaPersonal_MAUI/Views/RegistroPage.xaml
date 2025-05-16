@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgendaPersonal_MAUI.Views.RegistroPage"
+             Title="Crear una cuenta">
+    
+    <FlexLayout Direction="Column" AlignItems="Center" JustifyContent="SpaceBetween" Padding="10">
+
+        <VerticalStackLayout Padding="15" Margin="10">
+            <Frame CornerRadius="10" BorderColor="Green" HasShadow="True" Padding="5" Margin="10">
+                <Entry Placeholder="Username" WidthRequest="250"/>
+            </Frame>
+            <Frame CornerRadius="10" BorderColor="Green" HasShadow="True" Padding="5" Margin="10">
+                <Entry Placeholder="Password" WidthRequest="250"/>
+            </Frame>
+
+            <Frame CornerRadius="10" BorderColor="Green" HasShadow="True" Padding="5" Margin="10">
+                <Entry Placeholder="Email" WidthRequest="250"/>
+            </Frame>
+            <Button Text="Crear cuenta" Margin="30" FontSize="Subtitle" TextColor="Black"/>
+        </VerticalStackLayout>
+    </FlexLayout>
+</ContentPage>
