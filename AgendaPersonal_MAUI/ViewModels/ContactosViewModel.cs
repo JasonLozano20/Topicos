@@ -1,25 +1,81 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AgendaPersonal_MAUI.Datos;
 using AgendaPersonal_MAUI.Models;
+using AgendaPersonal_MAUI.Views;
 
 namespace AgendaPersonal_MAUI.ViewModels
 {
-    public class ContactosViewModel
+    public class ContactosViewModel : BindableObject
     {
-        public ObservableCollection<Contacto> Contactos { get; set; }
+        private readonly ContactoDataBase _db;
+        public ObservableCollection<Contacto> Contactos { get; } = new ObservableCollection<Contacto>();
+
+        public Command CargarContactosCommand { get; }
+        public Command AgregarContactoCommand { get; }
 
         public ContactosViewModel()
         {
-             Contactos = new ObservableCollection<Contacto>
+            string dbPath = Path.Combine(FileSystem.AppDataDirectory, "agenda.db");
+            _db = new ContactoDataBase(dbPath);
+
+            CargarContactosCommand = new Command(async () => await CargarContactos());
+            AgregarContactoCommand = new Command(async () => await AgregarContacto());
+
+
+
+            Task.Run(async () => await CargarContactos());
+        }
+
+        private async Task CargarContactos()
+        {
+            Contactos.Clear();
+            var contactos = await _db.ObtenerContactosAsync();
+
+            MainThread.BeginInvokeOnMainThread(() =>
             {
-                new Contacto { Nombre = "Juan Perez", Telefono = "6462512524", Correo = "juan@outlok.com", Direccion = "Calle 1" },
-                new Contacto { Nombre = "Jose Valdez", Telefono = "6641252145", Correo = "Jose@hotmail.com", Direccion = "Calle 2" },
-                new Contacto { Nombre = "Luis Torres", Telefono = "6467515462", Correo = "luis@gmail.com", Direccion = "Calle 3" }
-            };
+                foreach (var contacto in contactos)
+                {
+                    Contactos.Add(contacto);
+                }
+            });
+        }
+        public async Task EliminarContacto(Contacto contacto)
+        {
+            try
+            {
+                await _db.EliminarContactoAsync(contacto);
+                Contactos.Remove(contacto);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al eliminar: {ex.Message}");
+            }
+        }
+        //public async Task EditarContacto(Contacto contacto)
+        //{
+        //    try
+        //    {
+        //        await _db.EditarContactoAsync(contacto);
+        //        Contactos.Add(contacto);
+                
+        //    }
+
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine($"Error al editar: {ex.Message}");
+        //    }
+        //}
+        private async Task AgregarContacto()
+        {
+            
         }
     }
 }
+

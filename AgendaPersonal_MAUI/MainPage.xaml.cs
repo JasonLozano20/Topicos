@@ -1,4 +1,6 @@
-﻿namespace AgendaPersonal_MAUI
+﻿using AgendaPersonal_MAUI.Models;
+
+namespace AgendaPersonal_MAUI
 {
     public partial class MainPage : ContentPage
     {

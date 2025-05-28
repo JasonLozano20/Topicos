@@ -7,18 +7,18 @@
     <FlexLayout Direction="Column" AlignItems="Start" JustifyContent="Center" Padding="10">
         <VerticalStackLayout Padding="15" Spacing="15">
             <Frame CornerRadius="10" BorderColor="Blue" HasShadow="True" Padding="3">
-                <Entry Placeholder="Nombre" WidthRequest="250"/>
+                <Entry x:Name="nombreEntry" Placeholder="Nombre" WidthRequest="250"/>
             </Frame>
             <Frame CornerRadius="10" BorderColor="Blue" HasShadow="True" Padding="3">
-                <Entry Placeholder="Telefono" WidthRequest="250"/>
+                <Entry x:Name="telefonoEntry"  Placeholder="Telefono" WidthRequest="250"/>
             </Frame>
             <Frame CornerRadius="10" BorderColor="Blue" HasShadow="True" Padding="3">
-                <Entry Placeholder="Correo" WidthRequest="250"/>
+                <Entry x:Name="CorreoEmpty" Placeholder="Correo" WidthRequest="250"/>
             </Frame>
             <Frame CornerRadius="10" BorderColor="Blue" HasShadow="True" Padding="3">
-                <Entry Placeholder="Dirección" WidthRequest="250"/>
+                <Entry x:Name="direccionEmpty" Placeholder="Dirección" WidthRequest="250"/>
             </Frame>
-            <Button Text="Guardar contacto" WidthRequest="250"/>
+            <Button Text="Guardar contacto" Clicked="OnGuardarClicked" />
 
         </VerticalStackLayout>
     </FlexLayout>

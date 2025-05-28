@@ -43,7 +43,7 @@ public partial class LoginPage : ContentPage
 
     bool IsCredentialCorrect(string username, string password)
     {
-        return Username.Text == "admin" && Password.Text == "1234";
+        return Username.Text == "jason" && Password.Text == "1234";
     }
 
     
